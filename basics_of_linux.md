@@ -338,3 +338,39 @@ Wildcards in Linux are special characters used in commands to represent multiple
 ---
 
 Wildcards are commonly used in commands like `ls`, `rm`, `cp`, and `mv` to simplify file handling tasks. Let me know if you'd like to try specific examples or need more clarification! 🚀
+
+In Linux, both **soft links** (also known as symbolic links) and **hard links** are methods to reference files, but they work in different ways:
+
+### **Soft Link (Symbolic Link)**
+- **How It Works**: A soft link is like a shortcut that points to another file or directory. It simply contains a path to the target file.
+- **Characteristics**:
+  - It can link to files across different file systems or partitions.
+  - If the original file is deleted, the soft link becomes broken because it no longer has a valid target.
+  - Soft links can point to directories as well as files.
+- **Use Case**: Useful for creating shortcuts to files and directories.
+
+#### Command to create:
+```bash
+ln -s <target> <link_name>
+```
+For example:
+```bash
+ln -s /home/user/file.txt /home/user/soft_link.txt
+```
+
+### **Hard Link**
+- **How It Works**: A hard link is a direct reference to the file's inode (its identity on the file system). Essentially, the file gets a second name.
+- **Characteristics**:
+  - Hard links share the same inode, so they are indistinguishable from the original file.
+  - If the original file is deleted, the hard link still remains functional as it refers directly to the data.
+  - Hard links cannot span across different file systems or link to directories.
+- **Use Case**: Useful for ensuring data redundancy.
+
+#### Command to create:
+```bash
+ln <target> <link_name>
+```
+For example:
+```bash
+ln /home/user/file.txt /home/user/hard_link.txt
+```
