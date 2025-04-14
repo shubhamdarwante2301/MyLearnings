@@ -180,3 +180,69 @@ List of commands for setting up ACL :
 *   `whatis` command
 *   `command --help`
 *   `man` command
+
+Linux input/output redirection is a powerful feature that allows you to control how data flows between programs, files, and devices. Here’s an overview of the main concepts:
+
+### **1. Standard Input, Output, and Error**
+- **Standard Input (`stdin`)**: The input stream (keyboard by default) for a program.
+- **Standard Output (`stdout`)**: The output stream where a program writes results (terminal by default).
+- **Standard Error (`stderr`)**: The stream where error messages are displayed (also the terminal by default).
+
+### **2. Types of Redirection**
+#### **Redirecting Output**
+- Redirect output to a file:
+  ```bash
+  command > file.txt
+  ```
+  This replaces the file’s content.
+- Append output to a file:
+  ```bash
+  command >> file.txt
+  ```
+  This adds the output to the end of the file without overwriting.
+
+#### **Redirecting Input**
+- Redirect input from a file:
+  ```bash
+  command < file.txt
+  ```
+
+#### **Redirecting Errors**
+- Redirect error messages to a file:
+  ```bash
+  command 2> errors.txt
+  ```
+  Append error messages to a file:
+  ```bash
+  command 2>> errors.txt
+  ```
+
+#### **Combining Output and Errors**
+- Redirect both output and errors to the same file:
+  ```bash
+  command > file.txt 2>&1
+  ```
+- Send both to `/dev/null` (discard them):
+  ```bash
+  command > /dev/null 2>&1
+  ```
+
+### **3. Pipes**
+Use pipes (`|`) to send the output of one command as the input to another:
+```bash
+command1 | command2
+```
+
+### **4. Here Documents**
+Provide input directly within the script:
+```bash
+command << EOF
+Input data
+EOF
+```
+
+### **5. Tee Command**
+Write output to a file and the terminal simultaneously:
+```bash
+command | tee file.txt
+```
